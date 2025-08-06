@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-API_URL = 'https://jsonplaceholder.typicode.com/posts'
+API_URL = 'https://jairpalaguachi.pythonanywhere.com/landing/api/index/?format=json'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -125,5 +126,14 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 STATIC_ROOT = BASE_DIR/'staticfiles'
+
+CSRF_TRUSTED_ORIGINS = [
+  "https://localhost:8000",
+  "http://127.0.0.1:8000"
+]
+
+ALLOWED_HOSTS = [
+  "*",
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
