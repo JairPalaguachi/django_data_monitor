@@ -32,25 +32,21 @@
         </div>
       </div>
 
-      <!-- Indicador -->
+      <!-- Indicador: Calificación más frecuente -->
       <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd"
-              d="M 10 5.050781 C 11.609375 5.050781 12.917969 5.425781 12.917969 5.886719 L 12.917969 5.976562 C 13.359375 5.460938 13.832031 5.214844 14.167969 5.886719 C 14.902344 6.988281 13.367188 11.339844 11.5625 10.910156 C 11.226562 11.347656 10.886719 11.636719 10.609375 11.824219 C 10.992188 11.964844 11.25 12.238281 11.25 12.550781 C 11.25 12.847656 11.019531 13.109375 10.667969 13.253906 L 11.261719 13.945312 C 12.003906 14.125 12.5 14.460938 12.5 14.84375 C 12.5 15.417969 11.378906 15.886719 10 15.886719 C 8.621094 15.886719 7.5 15.417969 7.5 14.84375 C 7.5 14.460938 7.996094 14.125 8.738281 13.945312 L 9.332031 13.253906 C 8.980469 13.109375 8.75 12.847656 8.75 12.550781 C 8.75 12.238281 9.007812 11.964844 9.390625 11.824219 C 9.113281 11.636719 8.773438 11.347656 8.4375 10.910156 C 6.632812 11.339844 5.097656 6.988281 5.832031 5.886719 C 6.167969 5.214844 6.640625 5.460938 7.082031 5.976562 L 7.082031 5.886719 C 7.082031 5.425781 8.390625 5.050781 10 5.050781 Z M 13.75 6.457031 C 13.75 5.914062 13.324219 6.402344 12.84375 7.300781 C 12.71875 8.460938 12.4375 9.351562 12.105469 10.03125 C 13.148438 9.632812 13.75 7.519531 13.75 6.457031 Z M 6.25 6.457031 C 6.25 7.519531 6.851562 9.632812 7.894531 10.03125 C 7.5625 9.351562 7.28125 8.460938 7.15625 7.300781 C 6.675781 6.402344 6.25 5.914062 6.25 6.457031 Z M 6.25 6.457031"
+              d="M10 15l-5.878 3.09 1.122-6.545L.488 6.91l6.561-.955L10 0l2.951 5.955 6.561.955-4.756 4.635 1.122 6.545z"
               clip-rule="evenodd"></path>
           </svg>
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Producto más vendido
+            Calificación más frecuente
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-
-            <!-- START - valor del indicador 2 -->
-            Valor 2
-            <!-- END - valor del indicador 2 -->
-
+            {{ most_common_rating }} estrellas
           </p>
         </div>
       </div>
@@ -66,19 +62,15 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Indicador 3
+            Calificación menos frecuente
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-
-            <!-- START - valor del indicador 3 -->
-            Valor 3
-            <!-- END - valor del indicador 3 -->
-
+            {{ least_common_rating }} estrellas
           </p>
         </div>
       </div>
 
-      <!-- Indicador -->
+      <!-- Indicador 4: solo promedio -->
       <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
           <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -89,14 +81,10 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-            Indicador 4
+            Promedio de calificación
           </p>
           <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-
-            <!-- START - valor del indicador 4 -->
-            Valor 4
-            <!-- END - valor del indicador 4 -->
-
+            {% if avg_rating %}{{ avg_rating }} estrellas{% else %}N/A{% endif %}
           </p>
         </div>
       </div>
@@ -113,25 +101,21 @@
             <thead>
               <tr
                 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                <th class="px-4 py-3">Columna 1</th>
-                <th class="px-4 py-3">Columna 2</th>
+                <th class="px-4 py-3">Nombres</th>
+                <th class="px-4 py-3">Rating</th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
 
               <!-- START - respuestas -->
+              {% for review in reviews %}
               <tr class="text-gray-700 dark:text-gray-400">
-                <td class="px-4 py-3 text-sm">
-                  <!-- START - fila.valor1 -->
-                  fila.valor1
-                  <!-- END - fila.valor1 -->
-                </td>
-                <td class="px-4 py-3 text-sm">
-                  <!-- START - fila.valor2 -->
-                  fila.valor2
-                  <!-- END - fila.valor2 -->
-                </td>
+                <td class="px-4 py-3 text-sm">{{ review.name }}</td>
+                <td class="px-4 py-3 text-sm">{{ review.rating }} estrellas</td>
               </tr>
+              {% empty %}
+              <tr><td colspan="2">No hay datos</td></tr>
+              {% endfor %}
               <!-- END - respuestas -->
 
             </tbody>
@@ -141,7 +125,7 @@
           class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
           <span class="flex items-center col-span-3">
             <!-- START - # total de respuestas -->
-            XXX
+            {{ total_responses }}
             <!-- END - # total de respuestas -->
             respuestas
           </span>
@@ -155,7 +139,11 @@
           <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
             Título del gráfico
           </h4>
-          <canvas id="line"></canvas>
+          <canvas id="line"
+            data-labels="{{ rating_labels|join:',' }}"
+            data-counts="{{ rating_counts|join:',' }}"
+            data-least="{{ least_common_rating }}"
+          ></canvas>
         </div>
       </div>
       <!-- END - Gráficos -->
