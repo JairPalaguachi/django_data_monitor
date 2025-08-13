@@ -114,7 +114,9 @@
                 <td class="px-4 py-3 text-sm">{{ review.rating }} estrellas</td>
               </tr>
               {% empty %}
-              <tr><td colspan="2">No hay datos</td></tr>
+              <tr>
+                <td colspan="2">No hay datos</td>
+              </tr>
               {% endfor %}
               <!-- END - respuestas -->
 
@@ -137,18 +139,29 @@
       <div class="row-span-1 grid gap-6 mb-8 md:grid-cols-12">
         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
           <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-            Título del gráfico
+            Calificaciones - Gráfico de línea
           </h4>
-          <canvas id="line"
-            data-labels="{{ rating_labels|join:',' }}"
-            data-counts="{{ rating_counts|join:',' }}"
-            data-least="{{ least_common_rating }}"
-          ></canvas>
+          <canvas id="line" data-labels="{{ rating_labels|join:',' }}" data-counts="{{ rating_counts|join:',' }}"
+            data-least="{{ least_common_rating }}"></canvas>
+        </div>
+
+        <!-- Gráfico de barras -->
+        <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+          <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+            Calificaciones - Gráfico de barras
+          </h4>
+          <canvas id="bars" data-labels="{{ rating_labels|join:',' }}" data-counts="{{ rating_counts|join:',' }}"
+            data-least="{{ least_common_rating }}"></canvas>
         </div>
       </div>
-      <!-- END - Gráficos -->
-
     </div>
+
+
+
+
+    <!-- END - Gráficos -->
+
+  </div>
 
   </div>
 </main>
