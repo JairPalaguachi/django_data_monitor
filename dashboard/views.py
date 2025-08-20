@@ -2,7 +2,6 @@ from typing import Counter
 from django.shortcuts import render
 import requests
 from django.conf import settings
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
 
